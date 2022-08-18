@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# this is a bash script to print "Best School" 10 times
+#Author: kaleab shiferaw girma
+for i in {1..10}
+do
+echo "Best School"
+done
