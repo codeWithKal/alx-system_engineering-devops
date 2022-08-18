@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# a script that uses while to print best school ten times
+#Author: kaleab shiferaw Girma
+i=1
+while [ $i -le 10 ]
+do
+echo "Best School"
+i=$(( i + 1))
+done
