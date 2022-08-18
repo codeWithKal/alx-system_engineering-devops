@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#a script using until looping to print "Best School" 10 times
+#Author: Kaleab Shiferaw Girma
+i=1
+until [ $i -gt  10 ]
+do
+echo "Best School"
+((i++))
+done
