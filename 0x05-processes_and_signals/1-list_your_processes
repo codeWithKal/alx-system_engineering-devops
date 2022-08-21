@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #a script that lists a running process
 #Author: Kaleab Shiferaw Girma
-ps -aux
+ps -auxf
