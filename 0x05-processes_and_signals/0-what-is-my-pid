@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#a script to display its own PID
+#Author: Kaleab Shiferaw Girma
+echo $BASHPID
