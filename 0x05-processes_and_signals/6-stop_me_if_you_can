@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Stop me if you can :)
+#Author: Kaleab shiferaw Girma
+pkill -9 -f "4-to_infinity_and_beyond"
