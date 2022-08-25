@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#a script that lists a running listening ports of a device and the pid and name
+#of the program to which eah socket belongs
+#Author: Kaleab Shiferaw Girma
+netstat -lp
