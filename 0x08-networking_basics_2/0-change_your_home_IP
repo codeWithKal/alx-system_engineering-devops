@@ -3,5 +3,5 @@
 #Author: Kaleab Shiferaw Girma
 cp /etc/hosts ~/copiedHosts.old
 echo "127.0.0.2		localhost" >> ~/copiedHosts.old
-echo "127.0.0.2		facebook.com" >> ~/copiedHosts.old
+echo "8.8.8.8		facebook.com" >> ~/copiedHosts.old
 cp -f ~/copiedHosts.old /etc/hosts
