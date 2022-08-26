@@ -2,6 +2,6 @@
 #This bash script resolves certain IP addresses to another domain names
 #Author: Kaleab Shiferaw Girma
 cp /etc/hosts ~/copiedHosts.old
-echo "127.0.0.2 	localhost" >> ~/copiedHosts.old
-echo "127.0.0.2 	facebook.com" >> ~/copiedHosts.old
-cp ~/copiedHosts.old /etc/hosts
+echo "127.0.0.2		localhost" >> ~/copiedHosts.old
+echo "127.0.0.2		facebook.com" >> ~/copiedHosts.old
+cp -f ~/copiedHosts.old /etc/hosts
