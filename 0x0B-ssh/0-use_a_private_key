@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-ssh -i ~/.ssh/school -o "PasswordAuthentication no" ubuntu@44.210.236.176
+ssh -i ~/.ssh/school ubuntu@44.210.236.176
