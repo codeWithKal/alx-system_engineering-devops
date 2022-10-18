@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# a script that install and configur nginx on remote server
+
+apt-get -y update
+apt-get -y install nginx
+service  nginx start
+ufw allow 'Nginx HTTP'
+mkdir -p /var/www/html
+chmod -R 755 /var/www
+echo "Hello World" >/var/www/html
+service nginx restart
