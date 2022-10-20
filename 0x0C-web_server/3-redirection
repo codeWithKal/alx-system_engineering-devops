@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# A script that updates an nginx and then redirect to a youtube video using sed
+
+# updating apt package installer and installing nginx
+sudo apt-get update -y -qq && \
+	sudo apt-get install nginx -y
+
+#starting nginx service
+sudo service nginx start
+
+#allowing nginx to pass firewall
+sudo ufw allow 'Nginx HTTP'
+
+#changing the ownership of a files and directory permission
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+#backing up the default 
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.backup
+
+#creating a new index
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+
+#redirection using sed 
+sudo sed -i '24i\	rewrite ^/redirect_me https://www.youtube.com'
+
+#restarting nginx
+sudo service nginx restart
+
+echo "sucessfully completed"
