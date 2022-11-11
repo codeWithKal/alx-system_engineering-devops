@@ -1,29 +1,18 @@
 #!/usr/bin/env bash
-# Domain info fetcher
-# Fetches information about an array of subdomains.
-# 	Usage: fetch_subdomains domain subdomains
-# 	Example 1: fetch_subdomains google.com mail
-# 	Example 2: fetch_subdomains google.com 'www images maps mail'
-fetch_subdomains() {
-	domain="$1"
-	subdomains=()
-	readarray -t subdomains < <(echo "$2" | tr ' ' '\n')
-	for ((i = 0; i < "${#subdomains[@]}"; i++)) do
-		subdomain="${subdomains[i]}"
-		output_awk='{print "The subdomain", "'
-		output_awk="$output_awk$subdomain is a"
-		output_awk="$output_awk\", \$7, \"record and points to\", \$8}"
-		dig "$subdomain.$domain" \
-			| grep -A1 'ANSWER SECTION:' \
-			| tr '\n' ' ' \
-			| awk "$output_awk"
-	done
+# This script uses fetches a necessay info about the domain name
+
+info_analyser()
+{
+	cutted_section=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $4 " " $5}')
+	echo "$cutted_section" "$2" | awk '{print "The subdomain " $3 " is a " $1 " record and points to " $2}'
 }
 
-if [ "${#BASH_ARGV[@]}" -ge '2' ]; then
-	fetch_subdomains "$1" "$2"
-elif [ "${#BASH_ARGV[@]}" -ge '1' ]; then
-	fetch_subdomains "$1" "www lb-01 web-01 web-02"
+if [ "$#" == 2 ]
+then
+	info_analyser "$1" "$2"
 else
-	exit
+	info_analyser "$1" "www"
+	info_analyser "$1" "lb-01"
+	info_analyser "$1" "web-01"
+	info_analyser "$1" "web-02"
 fi
